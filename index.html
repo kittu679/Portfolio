@@ -3,275 +3,492 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kanneboina Kiran  - Portfolio</title>
+    <title>Kanneboina Kiran – Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --blue-very-light: #D7E7FC;
+            --green-very-light: #e0f4db;
+            --pink-very-light: #F9F7FA;
+            --ink: #0f172a;
+            --muted: #334155;
+            --section-bg-color:  #F9F7FA;/* close to white */
+            --inner-card-bg-color: #F0F7E9; /* light green */
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
-            color: #1f2937;
+            color: var(--ink);
+            background-color: var(--blue-very-light);
         }
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 1.5rem;
         }
-        .section-card {
-            background-color: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-            padding: 2.5rem;
-            margin-top: 2rem;
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .chip {
+            border-radius: 9999px;
+            padding: 0.375rem 0.875rem;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease-in-out;
+        }
+        .card {
+            border-radius: 16px;
+            box-shadow: 0 8px 28px rgba(15, 23, 42, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            background-color: var(--inner-card-bg-color);
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+        }
+        .ring-soft {
+            box-shadow: 0 0 0 8px rgba(215, 231, 252, 0.45);
         }
         .hover-card {
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            transition: transform .2s ease, box-shadow .2s ease;
         }
         .hover-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
         }
-        .skill-item {
-            background-color: #e0f2fe;
-            color: #0c4a6e;
-            border-radius: 9999px;
-            padding: 0.5rem 1rem;
-            font-size: 0.875rem;
-            font-weight: 600;
+        .skill-item:hover {
+            background-color: #BDE0FE;
         }
-        .project-link {
-            transition: color 0.2s ease-in-out;
-        }
-        .project-link:hover {
-            color: #3b82f6;
-        }
-        .nav-link {
-            transition: color 0.2s ease-in-out;
-        }
-        .nav-link:hover {
-            color: #3b82f6;
-        }
-
-        /* Hide navigation by default, show with JS on scroll */
-        .header-hidden {
-            transform: translateY(-100%);
-            transition: transform 0.3s ease-in-out;
-        }
-        .header-visible {
-            transform: translateY(0);
-        }
-
         @media (max-width: 640px) {
             .container {
                 padding: 1rem;
             }
-            .section-card {
-                padding: 1.5rem;
-            }
         }
     </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandblue: '#3C9BFA',
+                        brandgreen: '#F0F7E9',
+                        brandpink: '#F2FAFC'
+                    }
+                }
+            }
+        };
+    </script>
 </head>
-<body class="bg-blue-50">
-
-    <!-- Sticky Navigation Bar (Hidden by default) -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white shadow-md py-4 header-hidden">
-        <div class="container flex justify-between items-center">
-            <a href="#hero" class="text-xl font-bold text-gray-800">Kanneboina Kiran</a>
-            <div class="flex space-x-6">
-                <a href="#about" class="nav-link text-gray-600">About</a>
-                <a href="#education" class="nav-link text-gray-600">Education</a>
-                <a href="#experience" class="nav-link text-gray-600">Experience</a>
-                <a href="#projects" class="nav-link text-gray-600">Projects</a>
-                <a href="#skills" class="nav-link text-gray-600">Skills</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <header id="hero" class="min-h-screen flex items-center justify-center text-center bg-gray-50 py-12 md:py-24">
-        <div class="flex flex-col items-center max-w-2xl px-4">
-            <img src="https://i.postimg.cc/0yf5JXPX/kiran12.jpg" alt="Kanneboina Kiran" class="rounded-full h-40 w-40 mb-8 border-4 border-blue-200 shadow-md">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-2">
-                Kanneboina Kiran
-            </h1>
-            <p class="mt-2 text-xl md:text-2xl text-gray-600 font-semibold mb-6">
-                M.Tech, Geoinformatics, IIT Kanpur
-            </p>
-            <div class="flex space-x-6 mb-8">
-                <a href="https://www.linkedin.com/in/kanneboina-kiran/" target="_blank" class="text-gray-600 hover:text-blue-500 transition-colors duration-200">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.767s.784-1.767 1.75-1.767 1.75.79 1.75 1.767-.783 1.767-1.75 1.767zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                    </svg>
+<body>
+    <!-- Header / Nav -->
+    <header class="sticky top-0 z-50 glass border-b border-white/60">
+        <div class="container flex items-center justify-between py-4">
+            <a href="#hero" class="text-lg md:text-xl font-extrabold tracking-tight">Kanneboina Kiran</a>
+            <nav class="hidden md:flex items-center gap-6 text-slate-700">
+                <a class="hover:text-blue-500" href="#about">About</a>
+                <a class="hover:text-blue-500" href="#education">Education</a>
+                <a class="hover:text-blue-500" href="#experience">Experience</a>
+                <a class="hover:text-blue-500" href="#projects">Projects</a>
+                <a class="hover:text-blue-500" href="#skills">Skills</a>
+                <a class="hover:text-blue-500" href="#contact">Contact</a>
+            </nav>
+            <div class="hidden md:flex items-center gap-4 text-gray-500">
+                <a href="https://www.linkedin.com/in/kanneboina-kiran/" target="_blank" class="hover:text-blue-500 transition" aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14C2.239 0 0 2.239 0 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5V5c0-2.761-2.238-5-5-5zM8 19H5V8h3v11zM6.5 6.732A1.768 1.768 0 1 1 6.5 3.197a1.768 1.768 0 0 1 0 3.535zM20 19h-3v-5.604c0-3.368-4-3.113-4 0V19h-3V8h3v1.765c1.396-2.586 7-2.777 7 2.476V19z"/></svg>
                 </a>
-                <a href="https://github.com/kittu679" target="_blank" class="text-gray-600 hover:text-blue-500 transition-colors duration-200">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.809 1.309 3.492.997.107-.775.418-1.309.762-1.605-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.468-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
+                <a href="https://github.com/kittu679" target="_blank" class="hover:text-blue-500 transition" aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.649.5.5 5.649.5 12c0 5.086 3.292 9.395 7.865 10.914.575.106.785-.249.785-.553 0-.273-.01-1-.016-1.963-3.199.695-3.874-1.542-3.874-1.542-.523-1.329-1.277-1.682-1.277-1.682-1.044-.714.08-.699.08-.699 1.155.081 1.763 1.187 1.763 1.187 1.027 1.76 2.696 1.252 3.353.957.104-.744.402-1.252.73-1.54-2.553-.29-5.237-1.276-5.237-5.675 0-1.253.448-2.276 1.183-3.079-.119-.29-.512-1.459.112-3.039 0 0 .964-.309 3.16 1.178.916-.255 1.9-.383 2.878-.388.978.005 1.965.133 2.883.388 2.193-1.487 3.155-1.178 3.155-1.178.625 1.58.232 2.749.114 3.039.737.803 1.181 1.826 1.181 3.079 0 4.41-2.69 5.381-5.254 5.668.414.359.782 1.066.782 2.149 0 1.551-.014 2.802-.014 3.182 0 .307.207.664.792.551C20.214 21.39 23.5 17.083 23.5 12 23.5 5.649 18.351.5 12 .5z"/></svg>
                 </a>
-                <a href="mailto:kkiran24@iitk.ac.in" class="text-gray-600 hover:text-blue-500 transition-colors duration-200">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-16 1.518l7.592 6.551c.148.128.344.191.53.191s.382-.063.53-.191L20 5.518V6c0 .552-.448 1-1 1h-3c-.552 0-1-.448-1-1v-1l-5.632 4.86c-.465.401-.898.601-1.368.601s-.903-.2-1.368-.601L5 5.518V6c0 .552-.448 1-1 1H4v-1.482z"/>
-                    </svg>
+                <a href="mailto:kkiran24@iitk.ac.in" class="hover:text-blue-500 transition" aria-label="Email">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-8 8.99L4.943 7h14.114L12 12.99z"/></svg>
                 </a>
             </div>
-            <a href="#about" class="mt-4 px-6 py-3 bg-blue-500 text-white rounded-full font-semibold shadow-lg hover:bg-blue-600 transition-colors duration-200">
-                Explore My Portfolio
-            </a>
         </div>
     </header>
 
-    <main class="container">
-        <!-- About Me Section -->
-        <section id="about" class="section-card">
-            <h2 class="text-3xl font-bold mb-6 text-gray-800">About Me</h2>
-            <p class="text-lg text-gray-700 leading-relaxed">
-                I am an M.Tech student in Geoinformatics at the Indian Institute of Technology, Kanpur, with a passion for leveraging technology to solve complex problems in the civil engineering and geospatial domains. My academic journey has equipped me with a strong foundation in GIS, remote sensing, AI, and machine learning. I am dedicated to continuous learning and applying my skills to create impactful solutions.
-            </p>
+    <!-- Hero   
+     https://i.postimg.cc/0yf5JXPX/kiran12.jpg
+    https://i.postimg.cc/mgqqNzMm/Kiran-formal.jpg  
+    https://i.postimg.cc/43WYSGf2/Kiran.jpg             
+     https://i.postimg.cc/RCbZddd5/Gemini-Generated-Image-350opf350opf350o.png   
+     https://i.postimg.cc/BQ4tXbmt/Gemini-Generated-Image-l0pd1al0pd1al0pd-1.png
+     
+     -->
+    <section id="hero" class="relative overflow-hidden bg-white min-h-screen">
+        <div class="absolute inset-0 transition duration-1000" style="background: linear-gradient(45deg, var(--pink-very-light) 0%, var(--blue-very-light) 75%);"></div>
+        <div class="container min-h-[70vh] md:min-h-[78vh] grid md:grid-cols-[0.9fr,1.1fr] gap-10 items-center py-16">
+            <div class="flex md:justify-center justify-center relative z-10">
+                <div class="relative">
+                    <div class="absolute inset-0 -z-10 rounded-full ring-soft" style="box-shadow: 0 0 0 8px #d7e7fc;"></div>
+                    <img src="https://i.postimg.cc/RCbZddd5/Gemini-Generated-Image-350opf350opf350o.png" alt="Kiran portrait" class="w-56 h-56 md:w-72 md:h-72 rounded-full object-cover border-4 border-white shadow-xl" />
+                </div>
+            </div>
+            <div class="relative z-10">
+                <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">Kanneboina Kiran</h1>
+                <p class="mt-2 text-xl md:text-2xl text-slate-700 font-semibold">M.Tech, Geoinformatics, IIT Kanpur</p>
+                <div class="mt-6 flex gap-6 text-gray-600">
+                    <a href="https://www.linkedin.com/in/kanneboina-kiran/" target="_blank" class="hover:text-gray-800 transition" aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14C2.239 0 0 2.239 0 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5V5c0-2.761-2.238-5-5-5zM8 19H5V8h3v11zM6.5 6.732A1.768 1.768 0 1 1 6.5 3.197a1.768 1.768 0 0 1 0 3.535zM20 19h-3v-5.604c0-3.368-4-3.113-4 0V19h-3V8h3v1.765c1.396-2.586 7-2.777 7 2.476V19z"/></svg>
+                    </a>
+                    <a href="https://github.com/kittu679" target="_blank" class="hover:text-gray-800 transition" aria-label="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.649.5.5 5.649.5 12c0 5.086 3.292 9.395 7.865 10.914.575.106.785-.249.785-.553 0-.273-.01-1-.016-1.963-3.199.695-3.874-1.542-3.874-1.542-.523-1.329-1.277-1.682-1.277-1.682-1.044-.714.08-.699.08-.699 1.155.081 1.763 1.187 1.763 1.187 1.027 1.76 2.696 1.252 3.353.957.104-.744.402-1.252.73-1.54-2.553-.29-5.237-1.276-5.237-5.675 0-1.253.448-2.276 1.183-3.079-.119-.29-.512-1.459.112-3.039 0 0 .964-.309 3.16 1.178.916-.255 1.9-.383 2.878-.388.978.005 1.965.133 2.883.388 2.193-1.487 3.155-1.178 3.155-1.178.625 1.58.232 2.749.114 3.039.737.803 1.181 1.826 1.181 3.079 0 4.41-2.69 5.381-5.254 5.668.414.359.782 1.066.782 2.149 0 1.551-.014 2.802-.014 3.182 0 .307.207.664.792.551C20.214 21.39 23.5 17.083 23.5 12 23.5 5.649 18.351.5 12 .5z"/></svg>
+                    </a>
+                    <a href="mailto:kkiran24@iitk.ac.in" class="hover:text-gray-800 transition" aria-label="Email">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-8 8.99L4.943 7h14.114L12 12.99z"/></svg>
+                    </a>
+                </div>
+                <a href="#about" class="inline-block mt-7 chip bg-blue-500 text-white hover:brightness-95 transition">Explore My Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <!-- About -->
+        <section id="about" class="container py-10">
+            <div class="card p-8" style="background-color: var(--section-bg-color);">
+                <h2 class="text-2xl md:text-3xl font-bold">About Me</h2>
+                <p class="mt-4 text-slate-800 leading-relaxed">
+                    I am a highly motivated final-year M.Tech student in Geoinformatics at the Indian Institute of Technology, Kanpur. With a strong foundation in GIS, remote sensing, and a minor in AI/ML, I am passionate about applying my skills to solve complex problems. My experience includes working with cadastral survey files, performing spatial analysis, and developing innovative solutions using machine learning and deep learning models. I am a detail-oriented, hard-working individual eager to contribute to meaningful projects.
+                </p>
+            </div>
         </section>
 
-        <!-- Education Section -->
-        <section id="education" class="section-card">
-            <h2 class="text-3xl font-bold mb-6 text-gray-800">Education</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="p-6 rounded-lg bg-gray-50 border border-gray-100 hover-card">
-                    <h3 class="text-xl font-semibold text-gray-800">MT Geoinformatics</h3>
-                    <p class="text-lg text-gray-600">Indian Institute of Technology, Kanpur</p>
-                    <p class="text-gray-500 text-sm mt-1">2024 - Present | CPI: 8.23/10</p>
+        <!-- Education -->
+
+ <section id="education" class="container py-10">
+            <div class="card p-8" style="background-color: var(--section-bg-color);">
+                <h2 class="text-2xl md:text-3xl font-bold">Education</h2>
+                <div class="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <article class="p-4 rounded-lg hover-card" style="background-color: var(--inner-card-bg-color);">
+                        <h3 class="font-semibold text-lg">M.Tech, Geoinformatics</h3>
+                        <p class="text-slate-600">Indian Institute of Technology, Kanpur</p>
+                        <p class="text-xs text-slate-500 mt-1">2024 - Present | CPI: 8.23/10</p>
+                    </article>
+                    <article class="p-4 rounded-lg hover-card" style="background-color: var(--inner-card-bg-color);">
+                        <h3 class="font-semibold text-lg">B.Tech, Civil Engineering</h3>
+                        <p class="text-slate-700">Vardhaman College of Engineering</p>
+                        <p class="text-xs text-slate-500 mt-1">2020 - 2024 | CPI: 8.17/10</p>
+                    </article>
+                    <article class="p-4 rounded-lg hover-card" style="background-color: var(--inner-card-bg-color);">
+                        <h3 class="font-semibold text-lg">BT (Minors), AI ML</h3>
+                        <p class="text-slate-700">Vardhaman College of Engineering</p>
+                        <p class="text-xs text-slate-500 mt-1">2022 - 2024 | CPI: 8.1/10</p>
+                    </article>
+                    <article class="p-4 rounded-lg hover-card" style="background-color: var(--inner-card-bg-color);">
+                        <h3 class="font-semibold text-lg">Higher Secondary (XII), TSBIE</h3>
+                        <p class="text-slate-700">MJPTBCWR Junior College, Nagarjuna sagar</p>
+                        <p class="text-xs text-slate-500 mt-1">2020 | Percentage: 97.3/100</p>
+                    </article>
+                    <article class="p-4 rounded-lg hover-card" style="background-color: var(--inner-card-bg-color);">
+                        <h3 class="font-semibold text-lg">Secondary (X), BSE Telangana</h3>
+                        <p class="text-slate-700">Saandeep High School</p>
+                        <p class="text-xs text-slate-500 mt-1">2018 | GPA: 9.5/10</p>
+                    </article>
                 </div>
-                <div class="p-6 rounded-lg bg-gray-50 border border-gray-100 hover-card">
-                    <h3 class="text-xl font-semibold text-gray-800">BT Civil Engineering</h3>
-                    <p class="text-lg text-gray-600">Vardhaman College of Engineering</p>
-                    <p class="text-gray-500 text-sm mt-1">2020 - 2024 | CPI: 8.17/10</p>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section id="experience" class="container py-10">
+            <div class="card p-8" style="background-color: var(--section-bg-color);">
+                <h2 class="text-2xl md:text-3xl font-bold">Experience</h2>
+                <div class="mt-6 grid grid-cols-1 gap-6">
+                    <article class="p-4 rounded-lg hover-card relative" style="background-color: var(--inner-card-bg-color);">
+                        <h3 class="text-lg font-semibold">Machine Learning Intern</h3>
+                        <p class="text-slate-600">Verzeo & Zebo.Ai</p>
+                        <p class="text-xs text-slate-500 mt-1">Jul 2022 – Aug 2022</p>
+                        <ul class="mt-3 space-y-1 text-slate-700 text-sm list-disc list-inside">
+                            <li>Completed live projects in Machine Learning with Python.</li>
+                            <li>Developed and evaluated Logistic Regression, Decision Tree, and KNN models for accurate credit card fraud detection as a minor project.</li>
+                            <li>Effectively handled class imbalance using SMOTETomek to improve model performance on fraudulent transactions.</li>
+                        </ul>
+                    </article>
+                    <article class="p-4 rounded-lg hover-card relative" style="background-color: var(--inner-card-bg-color);">
+                        <h3 class="text-lg font-semibold">GIS Intern</h3>
+                        <p class="text-slate-600">National Institute of Rural Development & Panchayati Raj, Hyderabad</p>
+                        <p class="text-xs text-slate-500 mt-1">Oct 2023 – Mar 2024</p>
+                        <ul class="mt-3 space-y-1 text-slate-700 text-sm list-disc list-inside">
+                            <li>Executed GIS workflows: clipping, mosaicking, and digitization of cadastral land records.</li>
+                            <li>Gained hands-on experience with GIS software including QGIS and ArcGIS for geospatial tasks.</li>
+                            <li>Demonstrated strong technical skills and ability to work effectively in a team.</li>
+                        </ul>
+                    </article>
+                    <article class="p-4 rounded-lg hover-card relative" style="background-color: var(--inner-card-bg-color);">
+                        <h3 class="text-lg font-semibold">GIS Analyst Intern</h3>
+                        <p class="text-slate-600">VCE Hyderabad in collaboration with Vaanahaa Education and Innovation Labs</p>
+                        <p class="text-xs text-slate-500 mt-1">Feb 2023 – Mar 2023</p>
+                        <ul class="mt-3 space-y-1 text-slate-700 text-sm list-disc list-inside">
+                            <li>Completed a project-based internship on Surveying, Remote Sensing and GIS.</li>
+                            <li>Gained practical skills in QGIS for spatial analysis and map preparation.</li>
+                            <li>Utilized DEM files for terrain analysis, including slope, aspect, and elevation model generation.</li>
+                        </ul>
+                    </article>
                 </div>
-                <div class="p-6 rounded-lg bg-gray-50 border border-gray-100 hover-card">
-                    <h3 class="text-xl font-semibold text-gray-800">BT (Minors) AI ML</h3>
-                    <p class="text-lg text-gray-600">Vardhaman College of Engineering</p>
-                    <p class="text-gray-500 text-sm mt-1">2022 - 2024 | CPI: 8.1/10</p>
+            </div>
+        </section>
+
+
+
+
+
+
+        
+        <!-- Projects 
+        <section id="projects" class="container py-10">
+            <div class="card p-8" style="background-color: var(--section-bg-color);">
+                <h2 class="text-2xl md:text-3xl font-bold">Projects</h2>
+                <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <article class="p-4 rounded-lg hover-card relative" style="background-color: var(--inner-card-bg-color);">
+                        <a href="https://github.com/kittu679/SanS-AI-RAG-Chatbot" target="_blank" aria-label="Project GitHub" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.649.5.5 5.649.5 12c0 5.086 3.292 9.395 7.865 10.914.575.106.785-.249.785-.553 0-.273-.01-1-.016-1.963-3.199.695-3.874-1.542-3.874-1.542-.523-1.329-1.277-1.682-1.277-1.682-1.044-.714.08-.699.08-.699 1.155.081 1.763 1.187 1.763 1.187 1.027 1.76 2.696 1.252 3.353.957.104-.744.402-1.252.73-1.54-2.553-.29-5.237-1.276-5.237-5.675 0-1.253.448-2.276 1.183-3.079-.119-.29-.512-1.459.112-3.039 0 0 .964-.309 3.16 1.178.916-.255 1.9-.383 2.878-.388.978.005 1.965.133 2.883.388 2.193-1.487 3.155-1.178 3.155-1.178.625 1.58.232 2.749.114 3.039.737.803 1.181 1.826 1.181 3.079 0 4.41-2.69 5.381-5.254 5.668.414.359.782 1.066.782 2.149 0 1.551-.014 2.802-.014 3.182 0 .307.207.664.792.551C20.214 21.39 23.5 17.083 23.5 12 23.5 5.649 18.351.5 12 .5z"/></svg>
+                        </a>
+                        <h3 class="text-lg font-semibold">SanS AI: A Sanskrit RAG Chatbot</h3>
+                        <p class="text-slate-600">Built a conversational RAG chatbot using LangChain, Gemini Pro, and FAISS vector database to enable real-time question-answering from ancient Sanskrit texts.</p>
+                    </article>
+                    <article class="p-4 rounded-lg hover-card relative" style="background-color: var(--inner-card-bg-color);">
+                        <a href="https://github.com/kittu679/Machine-Learning-Practice/tree/main/Credit%20card%20Fraud%20detection" target="_blank" aria-label="Project GitHub" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.649.5.5 5.649.5 12c0 5.086 3.292 9.395 7.865 10.914.575.106.785-.249.785-.553 0-.273-.01-1-.016-1.963-3.199.695-3.874-1.542-3.874-1.542-.523-1.329-1.277-1.682-1.277-1.682-1.044-.714.08-.699.08-.699 1.155.081 1.763 1.187 1.763 1.187 1.027 1.76 2.696 1.252 3.353.957.104-.744.402-1.252.73-1.54-2.553-.29-5.237-1.276-5.237-5.675 0-1.253.448-2.276 1.183-3.079-.119-.29-.512-1.459.112-3.039 0 0 .964-.309 3.16 1.178.916-.255 1.9-.383 2.878-.388.978.005 1.965.133 2.883.388 2.193-1.487 3.155-1.178 3.155-1.178.625 1.58.232 2.749.114 3.039.737.803 1.181 1.826 1.181 3.079 0 4.41-2.69 5.381-5.254 5.668.414.359.782 1.066.782 2.149 0 1.551-.014 2.802-.014 3.182 0 .307.207.664.792.551C20.214 21.39 23.5 17.083 23.5 12 23.5 5.649 18.351.5 12 .5z"/></svg>
+                        </a>
+                        <h3 class="text-lg font-semibold">Credit Card Fraud Detection using Machine Learning</h3>
+                        <p class="text-slate-600">Developed and evaluated Logistic Regression, Decision Tree, and KNN models to handle class imbalance and improve fraud detection performance.</p>
+                    </article>
+                    <article class="p-4 rounded-lg hover-card relative" style="background-color: var(--inner-card-bg-color);">
+                        <a href="https://github.com/kittu679/Sentiment-Analysis" target="_blank" aria-label="Project GitHub" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.649.5.5 5.649.5 12c0 5.086 3.292 9.395 7.865 10.914.575.106.785-.249.785-.553 0-.273-.01-1-.016-1.963-3.199.695-3.874-1.542-3.874-1.542-.523-1.329-1.277-1.682-1.277-1.682-1.044-.714.08-.699.08-.699 1.155.081 1.763 1.187 1.763 1.187 1.027 1.76 2.696 1.252 3.353.957.104-.744.402-1.252.73-1.54-2.553-.29-5.237-1.276-5.237-5.675 0-1.253.448-2.276 1.183-3.079-.119-.29-.512-1.459.112-3.039 0 0 .964-.309 3.16 1.178.916-.255 1.9-.383 2.878-.388.978.005 1.965.133 2.883.388 2.193-1.487 3.155-1.178 3.155-1.178.625 1.58.232 2.749.114 3.039.737.803 1.181 1.826 1.181 3.079 0 4.41-2.69 5.381-5.254 5.668.414.359.782 1.066.782 2.149 0 1.551-.014 2.802-.014 3.182 0 .307.207.664.792.551C20.214 21.39 23.5 17.083 23.5 12 23.5 5.649 18.351.5 12 .5z"/></svg>
+                        </a>
+                        <h3 class="text-lg font-semibold">Sentiment Analysis of Lenovo K8 Mobile Reviews</h3>
+                        <p class="text-slate-600">Implemented an NLP and Logistic Regression model to predict sentiment from phone reviews. Achieved high accuracy on new reviews and saved the model for future deployment.</p>
+                    </article>
+                    <article class="p-4 rounded-lg hover-card relative" style="background-color: var(--inner-card-bg-color);">
+                        <h3 class="text-lg font-semibold">Application of Deep Learning in Pavement Distress Classification</h3>
+                        <p class="text-slate-600">Used a trained YOLOv8 object detection model, converted to TFLite, to enable real-time pavement distress detection from live video streams in an Android application.</p>
+                    </article>
+                    <article class="p-4 rounded-lg hover-card relative" style="background-color: var(--inner-card-bg-color);">
+                        <h3 class="text-lg font-semibold">Analyzing LULC Changes in IIT Kanpur</h3>
+                        <p class="text-slate-600">Conducted a 9-year LULC analysis using Sentinel-1C & Sentinel-2A data on Google Earth Engine, and implemented supervised classification.</p>
+                    </article>
+                    <article class="p-4 rounded-lg hover-card relative" style="background-color: var(--inner-card-bg-color);">
+                        <h3 class="text-lg font-semibold">Comprehensive Quality Assessment of Aerial LiDAR Data</h3>
+                        <p class="text-slate-600">Assessed LiDAR data quality using geospatial software like LAStools and CloudCompare and conducted GNSS field surveys for accuracy.</p>
+                    </article>
+                    <article class="p-4 rounded-lg hover-card relative" style="background-color: var(--inner-card-bg-color);">
+                        <h3 class="text-lg font-semibold">Survey and Cartographic Mapping of IIT Kanpur Campus</h3>
+                        <p class="text-slate-600">Designed a detailed map using GNSS and Total Station for data collection and QGIS for final map production at 1:600 scale.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+-->
+
+
+
+        <!-- Projects -->
+        <section id="projects" class="container py-10">
+            <div class="card p-8" style="background-color: var(--section-bg-color);">
+                <h2 class="text-2xl md:text-3xl font-bold">Projects</h2>
+                <div class="mt-6 grid grid-cols-1 gap-6">
+                    <article class="p-4 rounded-lg hover-card relative" style="background-color: var(--inner-card-bg-color);">
+                        <a href="https://github.com/kittu679/SanS-AI-RAG-Chatbot" target="_blank" aria-label="Project GitHub" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.649.5.5 5.649.5 12c0 5.086 3.292 9.395 7.865 10.914.575.106.785-.249.785-.553 0-.273-.01-1-.016-1.963-3.199.695-3.874-1.542-3.874-1.542-.523-1.329-1.277-1.682-1.277-1.682-1.044-.714.08-.699.08-.699 1.155.081 1.763 1.187 1.763 1.187 1.027 1.76 2.696 1.252 3.353.957.104-.744.402-1.252.73-1.54-2.553-.29-5.237-1.276-5.237-5.675 0-1.253.448-2.276 1.183-3.079-.119-.29-.512-1.459.112-3.039 0 0 .964-.309 3.16 1.178.916-.255 1.9-.383 2.878-.388.978.005 1.965.133 2.883.388 2.193-1.487 3.155-1.178 3.155-1.178.625 1.58.232 2.749.114 3.039.737.803 1.181 1.826 1.181 3.079 0 4.41-2.69 5.381-5.254 5.668.414.359.782 1.066.782 2.149 0 1.551-.014 2.802-.014 3.182 0 .307.207.664.792.551C20.214 21.39 23.5 17.083 23.5 12 23.5 5.649 18.351.5 12 .5z"/></svg>
+                        </a>
+                        <h3 class="text-lg font-semibold">SanS AI: A Sanskrit RAG Chatbot</h3>
+                        <p class="text-slate-600">
+                            <ul class="list-disc list-inside">
+                                <li>Built a conversational RAG chatbot using LangChain Orchestration, Embedding-001, and FAISS vector database.</li>
+                                <li>Ingested Sanskrit corpus with Recursive CharacterTextSplitter and chunked text data.</li>
+                                <li>Implemented Google Gemini Pro LLM integration to enable real-time question-answering.</li>
+                            </ul>
+                        </p>
+                    </article>
+                    <article class="p-4 rounded-lg hover-card relative" style="background-color: var(--inner-card-bg-color);">
+                        <a href="https://github.com/kittu679/Machine-Learning-Practice/tree/main/Credit%20card%20Fraud%20detection" target="_blank" aria-label="Project GitHub" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.649.5.5 5.649.5 12c0 5.086 3.292 9.395 7.865 10.914.575.106.785-.249.785-.553 0-.273-.01-1-.016-1.963-3.199.695-3.874-1.542-3.874-1.542-.523-1.329-1.277-1.682-1.277-1.682-1.044-.714.08-.699.08-.699 1.155.081 1.763 1.187 1.763 1.187 1.027 1.76 2.696 1.252 3.353.957.104-.744.402-1.252.73-1.54-2.553-.29-5.237-1.276-5.237-5.675 0-1.253.448-2.276 1.183-3.079-.119-.29-.512-1.459.112-3.039 0 0 .964-.309 3.16 1.178.916-.255 1.9-.383 2.878-.388.978.005 1.965.133 2.883.388 2.193-1.487 3.155-1.178 3.155-1.178.625 1.58.232 2.749.114 3.039.737.803 1.181 1.826 1.181 3.079 0 4.41-2.69 5.381-5.254 5.668.414.359.782 1.066.782 2.149 0 1.551-.014 2.802-.014 3.182 0 .307.207.664.792.551C20.214 21.39 23.5 17.083 23.5 12 23.5 5.649 18.351.5 12 .5z"/></svg>
+                        </a>
+                        <h3 class="text-lg font-semibold">Credit Card Fraud Detection using Machine Learning</h3>
+                        <p class="text-slate-600">
+                            <ul class="list-disc list-inside">
+                                <li>Developed and evaluated Logistic Regression, Decision Tree, and KNN models for accurate credit card fraud detection.</li>
+                                <li>Effectively handled class imbalance using SMOTETomek to significantly improve model performance on fraudulent transactions.</li>
+                                <li>Achieved good performance metrics and saved models for potential deployment.</li>
+                            </ul>
+                        </p>
+                    </article>
+                    <article class="p-4 rounded-lg hover-card relative" style="background-color: var(--inner-card-bg-color);">
+                        <a href="https://github.com/kittu679/Sentiment-Analysis" target="_blank" aria-label="Project GitHub" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.649.5.5 5.649.5 12c0 5.086 3.292 9.395 7.865 10.914.575.106.785-.249.785-.553 0-.273-.01-1-.016-1.963-3.199.695-3.874-1.542-3.874-1.542-.523-1.329-1.277-1.682-1.277-1.682-1.044-.714.08-.699.08-.699 1.155.081 1.763 1.187 1.763 1.187 1.027 1.76 2.696 1.252 3.353.957.104-.744.402-1.252.73-1.54-2.553-.29-5.237-1.276-5.237-5.675 0-1.253.448-2.276 1.183-3.079-.119-.29-.512-1.459.112-3.039 0 0 .964-.309 3.16 1.178.916-.255 1.9-.383 2.878-.388.978.005 1.965.133 2.883.388 2.193-1.487 3.155-1.178 3.155-1.178.625 1.58.232 2.749.114 3.039.737.803 1.181 1.826 1.181 3.079 0 4.41-2.69 5.381-5.254 5.668.414.359.782 1.066.782 2.149 0 1.551-.014 2.802-.014 3.182 0 .307.207.664.792.551C20.214 21.39 23.5 17.083 23.5 12 23.5 5.649 18.351.5 12 .5z"/></svg>
+                        </a>
+                        <h3 class="text-lg font-semibold">Sentiment Analysis of Lenovo K8 Mobile Reviews</h3>
+                        <p class="text-slate-600">
+                            <ul class="list-disc list-inside">
+                                <li>Developed a sentiment analysis model using NLP and Logistic Regression to predict sentiment from phone reviews.</li>
+                                <li>Implemented a text preprocessing pipeline and utilized TF-IDF vectorization.</li>
+                                <li>Successfully predicted sentiment on new reviews and saved the model and vectorizer.</li>
+                            </ul>
+                        </p>
+                    </article>
+                    <article class="p-4 rounded-lg hover-card relative" style="background-color: var(--inner-card-bg-color);">
+                        <h3 class="text-lg font-semibold">Application of Deep Learning in Pavement Distress Classification</h3>
+                        <p class="text-slate-600">
+                            <ul class="list-disc list-inside">
+                                <li>Collected and manually annotated a road damage image dataset, defining and labeling five major pavement distress types.</li>
+                                <li>Used a trained YOLOv8 object detection model and converted it to TFLite for mobile deployment.</li>
+                                <li>Integrated the TFLite model into an Android application for real-time pavement distress detection.</li>
+                            </ul>
+                        </p>
+                    </article>
+                    <article class="p-4 rounded-lg hover-card relative" style="background-color: var(--inner-card-bg-color);">
+                        <h3 class="text-lg font-semibold">Analyzing LULC Changes in IIT Kanpur</h3>
+                        <p class="text-slate-600">
+                            <ul class="list-disc list-inside">
+                                <li>Conducted a 9-year LULC analysis using Sentinel-1C & Sentinel-2A data on Google Earth Engine (GEE).</li>
+                                <li>Implemented supervised classification using SmileCART Algorithm and performed change detection.</li>
+                                <li>Assessed accuracy with confusion matrices and Kappa coefficient, and visualized results via classified maps & GIFs.</li>
+                            </ul>
+                        </p>
+                    </article>
+                    <article class="p-4 rounded-lg hover-card relative" style="background-color: var(--inner-card-bg-color);">
+                        <h3 class="text-lg font-semibold">Comprehensive Quality Assessment of Aerial LiDAR Data</h3>
+                        <p class="text-slate-600">
+                            <ul class="list-disc list-inside">
+                                <li>Assessed LiDAR returns, overlap, accuracy, and data density using geospatial software like LAStools and CloudCompare.</li>
+                                <li>Conducted GNSS field survey to acquire GCPs for accuracy evaluation.</li>
+                                <li>Processed and visualized LiDAR point clouds for quality analysis and interpretation.</li>
+                            </ul>
+                        </p>
+                    </article>
+                    <article class="p-4 rounded-lg hover-card relative" style="background-color: var(--inner-card-bg-color);">
+                        <h3 class="text-lg font-semibold">Survey and Cartographic Mapping of IIT Kanpur Campus</h3>
+                        <p class="text-slate-600">
+                            <ul class="list-disc list-inside">
+                                <li>Designed a detailed map of the IIT Kanpur academic area using Juno 3B.</li>
+                                <li>Executed reconnaissance survey, established control points with a GNSS receiver, and performed traversing.</li>
+                                <li>Produced a final map of the IITK campus at a 1:600 scale using QGIS.</li>
+                            </ul>
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+        <!-- Skills -->
+        <section id="skills" class="container py-10">
+            <div class="card p-8" style="background-color: var(--section-bg-color);">
+                <h2 class="text-2xl md:text-3xl font-bold">Skills</h2>
+                <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="p-4" style="background-color: var(--inner-card-bg-color);">
+                        <h3 class="font-semibold">Programming Languages</h3>
+                        <div class="mt-3 flex flex-wrap gap-2">
+                            <span class="chip bg-brandblue text-white hover:brightness-95">Python</span>
+                            <span class="chip bg-brandblue text-white hover:brightness-95">SQL</span>
+                            <span class="chip bg-brandblue text-white hover:brightness-95">MATLAB</span>
+                        </div>
+                    </div>
+                    <div class="p-4" style="background-color: var(--inner-card-bg-color);">
+                        <h3 class="font-semibold">Libraries & Frameworks</h3>
+                        <div class="mt-3 flex flex-wrap gap-2">
+                            <span class="chip bg-brandblue text-white hover:brightness-95">NumPy</span>
+                            <span class="chip bg-brandblue text-white hover:brightness-95">Pandas</span>
+                            <span class="chip bg-brandblue text-white hover:brightness-95">Seaborn</span>
+                            <span class="chip bg-brandblue text-white hover:brightness-95">Scikit-learn</span>
+                            <span class="chip bg-brandblue text-white hover:brightness-95">Matplotlib</span>
+                            <span class="chip bg-brandblue text-white hover:brightness-95">OpenCV</span>
+                            <span class="chip bg-brandblue text-white hover:brightness-95">LangChain</span>
+                        </div>
+                    </div>
+                    <div class="p-4" style="background-color: var(--inner-card-bg-color);">
+                        <h3 class="font-semibold">Geospatial Software</h3>
+                        <div class="mt-3 flex flex-wrap gap-2">
+                            <span class="chip bg-brandblue text-white hover:brightness-95">ArcGIS</span>
+                            <span class="chip bg-brandblue text-white hover:brightness-95">QGIS</span>
+                            <span class="chip bg-brandblue text-white hover:brightness-95">CloudCompare</span>
+                            <span class="chip bg-brandblue text-white hover:brightness-95">Fugro Viewer</span>
+                            <span class="chip bg-brandblue text-white hover:brightness-95">Google Earth Engine (GEE)</span>
+                        </div>
+                    </div>
+                    <div class="p-4" style="background-color: var(--inner-card-bg-color);">
+                        <h3 class="font-semibold">Utilities & Other Software</h3>
+                        <div class="mt-3 flex flex-wrap gap-2">
+                            <span class="chip bg-brandblue text-white hover:brightness-95">LaTeX</span>
+                            <span class="chip bg-brandblue text-white hover:brightness-95">Power BI</span>
+                            <span class="chip bg-brandblue text-white hover:brightness-95">Jupyter Notebook</span>
+                            <span class="chip bg-brandblue text-white hover:brightness-95">Google Colab</span>
+                            <span class="chip bg-brandblue text-white hover:brightness-95">GitHub</span>
+                            <span class="chip bg-brandblue text-white hover:brightness-95">VS Code</span>
+                            <span class="chip bg-brandblue text-white hover:brightness-95">Tableau</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Certifications & Relevant Courses -->
+        <section id="certifications" class="container py-10">
+            <div class="card p-8" style="background-color: var(--section-bg-color);">
+                <h2 class="text-2xl md:text-3xl font-bold">Certifications & Relevant Courses</h2>
+                <div class="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <article class="p-4 rounded-lg hover-card" style="background-color: var(--inner-card-bg-color);">
+                        <h3 class="font-semibold text-lg">Machine Learning with Python</h3>
+                        <p class="text-slate-600">Verzeo</p>
+                        <p class="text-xs text-slate-500 mt-1">2023</p>
+                    </article>
+                    <article class="p-4 rounded-lg hover-card" style="background-color: var(--inner-card-bg-color);">
+                        <h3 class="font-semibold text-lg">Python for Data Science</h3>
+                        <p class="text-slate-600">NPTEL</p>
+                        <p class="text-xs text-slate-500 mt-1">2023</p>
+                    </article>
+                    <article class="p-4 rounded-lg hover-card" style="background-color: var(--inner-card-bg-color);">
+                        <h3 class="font-semibold text-lg">Geographic Information Systems</h3>
+                        <p class="text-slate-600">NPTEL</p>
+                        <p class="text-xs text-slate-500 mt-1">2022</p>
+                    </article>
                 </div>
             </div>
         </section>
         
-        <!-- Experience Section -->
-        <section id="experience" class="section-card">
-            <h2 class="text-3xl font-bold mb-6 text-gray-800">Experience</h2>
-            <div class="space-y-6">
-                <div class="p-6 rounded-lg bg-gray-50 border border-gray-100 hover-card">
-                    <h3 class="text-xl font-semibold text-gray-800">GIS Intern</h3>
-                    <p class="text-lg text-gray-600">National Institute of Rural Development & Panchayati Raj (NIRDPR), Hyderabad</p>
-                    <p class="text-gray-500 text-sm mt-1">Oct 2023 - Mar 2024</p>
-                    <ul class="list-disc list-inside mt-4 space-y-1 text-gray-700">
-                        <li>Completed a 5-month internship focused on GIS applications.</li>
-                        <li>Gained hands-on experience with GIS software, including QGIS & ArcGIS, for various geospatial tasks.</li>
-                        <li>Performed clipping, mosaicking, and digitization of cadastral land records for the Tehri Garhwal District in Uttarakhand.</li>
-                    </ul>
+
+
+
+
+        <!-- Contact -->
+        <section id="contact" class="container py-10">
+            <div class="card p-8" style="background-color: var(--section-bg-color);">
+                <h2 class="text-2xl md:text-3xl font-bold">Get In Touch</h2>
+                <p class="mt-2 text-slate-700 text-center">I'm always excited to discuss new projects or opportunities. Feel free to reach out!</p>
+                <div class="mt-6 flex flex-wrap justify-center gap-4">
+                    <a href="mailto:kkiran24@iitk.ac.in" class="chip bg-brandblue text-white hover:brightness-95"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm-8 8.99L4.943 7h14.114L12 12.99z"/></svg></a>
+                    <a href="https://www.linkedin.com/in/kanneboina-kiran/" target="_blank" class="chip bg-brandblue text-white hover:brightness-95"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14C2.239 0 0 2.239 0 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5V5c0-2.761-2.238-5-5-5zM8 19H5V8h3v11zM6.5 6.732A1.768 1.768 0 1 1 6.5 3.197a1.768 1.768 0 0 1 0 3.535zM20 19h-3v-5.604c0-3.368-4-3.113-4 0V19h-3V8h3v1.765c1.396-2.586 7-2.777 7 2.476V19z"/></svg></a>
+                    <a href="https://github.com/kittu679" target="_blank" class="chip bg-brandblue text-white hover:brightness-95"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.649.5.5 5.649.5 12c0 5.086 3.292 9.395 7.865 10.914.575.106.785-.249.785-.553 0-.273-.01-1-.016-1.963-3.199.695-3.874-1.542-3.874-1.542-.523-1.329-1.277-1.682-1.277-1.682-1.044-.714.08-.699.08-.699 1.155.081 1.763 1.187 1.763 1.187 1.027 1.76 2.696 1.252 3.353.957.104-.744.402-1.252.73-1.54-2.553-.29-5.237-1.276-5.237-5.675 0-1.253.448-2.276 1.183-3.079-.119-.29-.512-1.459.112-3.039 0 0 .964-.309 3.16 1.178.916-.255 1.9-.383 2.878-.388.978.005 1.965.133 2.883.388 2.193-1.487 3.155-1.178 3.155-1.178.625 1.58.232 2.749.114 3.039.737.803 1.181 1.826 1.181 3.079 0 4.41-2.69 5.381-5.254 5.668.414.359.782 1.066.782 2.149 0 1.551-.014 2.802-.014 3.182 0 .307.207.664.792.551C20.214 21.39 23.5 17.083 23.5 12 23.5 5.649 18.351.5 12 .5z"/></svg></a>
+                    <a href="tel:+91-9059348643" class="chip bg-brandblue text-white hover:brightness-95"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4h-2.18C16.94 4.04 16 5.06 16 6v2c0 1.1-.9 2-2 2h-4c-1.1 0-2-.9-2-2V6c0-1.04-.94-2.02-2.82-2H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-11 5.5h-2c-.28 0-.5-.22-.5-.5s.22-.5.5-.5h2c.28 0 .5.22.5.5s-.22.5-.5.5zM15 16h-6v-1.5h6V16zm0-3h-6v-1.5h6V13z"/></svg></a>
                 </div>
-                <div class="p-6 rounded-lg bg-gray-50 border border-gray-100 hover-card">
-                    <h3 class="text-xl font-semibold text-gray-800">GIS Analyst Intern</h3>
-                    <p class="text-lg text-gray-600">VCE Hyderabad, in collaboration with Vaanahaa Education and Innovation Labs</p>
-                    <p class="text-gray-500 text-sm mt-1">Feb 2023 - Mar 2023</p>
-                    <ul class="list-disc list-inside mt-4 space-y-1 text-gray-700">
-                        <li>Completed a 45-day project-based internship on Surveying, Remote Sensing and GIS.</li>
-                        <li>Acquired practical skills in QGIS for spatial analysis, map preparation, and visualization.</li>
-                        <li>Utilized DEM files for terrain analysis, including slope, aspect, and elevation model generation.</li>
-                    </ul>
+                <div class="mt-8 text-center">
+                    <a href="https://drive.google.com/uc?export=download&id=1qnsUxOrA1xmY1mHPbloa0EKDG8Pw8fZB" download class="chip bg-blue-500 text-white hover:brightness-95 transition">Download Resume</a>
                 </div>
             </div>
         </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="section-card">
-            <h2 class="text-3xl font-bold mb-6 text-gray-800">Projects</h2>
-            <div class="space-y-6">
-                <!-- Project 1: SanS AI -->
-                <div class="p-6 rounded-lg bg-gray-50 border border-gray-100 hover-card">
-                    <h3 class="text-xl font-semibold text-gray-800">SanS AI: A Sanskrit RAG Chatbot</h3>
-                    <p class="text-gray-500 text-sm mt-1">Jul 2025 - Aug 2025</p>
-                    <p class="mt-4 text-gray-700">Built a text RAG chatbot using FastAPI, LangChain, Google Gemini Pro, Embedding-001, and FAISS. Ingested Sanskrit corpus with DirectoryLoader, Recursive CharacterTextSplitter, and served similarity search via FAISS. The frontend was built with HTML, Tailwind CSS, and JavaScript.</p>
-                </div>
-                <!-- Project 2: K8 Reviews Sentiment Analysis -->
-                <div class="p-6 rounded-lg bg-gray-50 border border-gray-100 hover-card">
-                    <h3 class="text-xl font-semibold text-gray-800">K8 Reviews Sentiment Analysis Using NLP and Logistic Regression</h3>
-                    <p class="text-gray-500 text-sm mt-1">Jun 2024 - Jul 2024</p>
-                    <p class="mt-4 text-gray-700">Developed a sentiment analysis model to predict sentiment from K8 phone reviews. Implemented a text preprocessing pipeline and utilized TF-IDF vectorization. The model was successfully deployed and saved for future use.</p>
-                </div>
-                <!-- Project 3: Pavement Distress Classification -->
-                <div class="p-6 rounded-lg bg-gray-50 border border-gray-100 hover-card">
-                    <h3 class="text-xl font-semibold text-gray-800">Application of Deep Learning in Pavement Distress Classification</h3>
-                    <p class="text-gray-500 text-sm mt-1">Dec 2023 - Mar 2024</p>
-                    <p class="mt-4 text-gray-700">Collected and manually annotated a road damage image dataset from Kaggle. Selected YOLOv8 for its superior speed and efficiency. Trained the model and converted the weights to TFLite for deployment on an Android application, enabling real-time detection of pavement distress.</p>
-                </div>
-            </div>
-        </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="section-card">
-            <h2 class="text-3xl font-bold mb-6 text-gray-800">Skills</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div>
-                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Programming Languages</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-item">Python</span>
-                        <span class="skill-item">SQL</span>
-                        <span class="skill-item">MATLAB</span>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Libraries & Frameworks</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-item">NumPy</span>
-                        <span class="skill-item">Pandas</span>
-                        <span class="skill-item">Seaborn</span>
-                        <span class="skill-item">Scikit-learn</span>
-                        <span class="skill-item">Matplotlib</span>
-                        <span class="skill-item">OpenCV</span>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Geospatial Software</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-item">ArcGIS</span>
-                        <span class="skill-item">QGIS</span>
-                        <span class="skill-item">CloudCompare</span>
-                        <span class="skill-item">Fugro Viewer</span>
-                        <span class="skill-item">Google Earth Engine (GEE)</span>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Utilities & Other Software</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-item">LaTeX</span>
-                        <span class="skill-item">Tableau</span>
-                        <span class="skill-item">Jupyter Notebook</span>
-                        <span class="skill-item">Google Colab</span>
-                        <span class="skill-item">GitHub</span>
-                        <span class="skill-item">VS Code</span>
-                        <span class="skill-item">MS Office</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+
+
     </main>
-    
-    <!-- Footer -->
-    <footer class="bg-gray-100 text-center py-6 mt-12">
-        <p class="text-sm text-gray-600">Designed and built by Kanneboina Kiran. All rights reserved.</p>
+
+    <footer class="text-center py-6 text-slate-600">
+        <div class="container">© <span id="year"></span> Kanneboina Kiran</div>
     </footer>
 
-    <!-- JavaScript to show/hide navbar on scroll -->
     <script>
-        let lastScrollTop = 0;
-        const navbar = document.getElementById('navbar');
-
-        window.addEventListener('scroll', function() {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            if (scrollTop > window.innerHeight - 50) { // Show navbar when scrolled past hero
-                navbar.classList.add('header-visible');
-                navbar.classList.remove('header-hidden');
-            } else {
-                navbar.classList.remove('header-visible');
-                navbar.classList.add('header-hidden');
-            }
-        });
+        document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>
